@@ -9,8 +9,16 @@ export function add(numbers: string): number {
   if (numbers.startsWith('//')) {
     const newlineIndex = numbers.indexOf('\n');
     const header = numbers.slice(2, newlineIndex);
-    const escaped = header.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-    delimiterPattern = new RegExp(`[\n]|${escaped}`);
+    const escapeRegex = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    if (header.startsWith('[')) {
+      const matches = Array.from(header.matchAll(/\[([^\]]+)\]/g));
+      const delimiters = matches.map((m) => escapeRegex(m[1]));
+      const alternation = delimiters.join('|');
+      delimiterPattern = new RegExp(`\\n|(?:${alternation})`);
+    } else {
+      const escaped = escapeRegex(header);
+      delimiterPattern = new RegExp(`\\n|${escaped}`);
+    }
     payload = numbers.slice(newlineIndex + 1);
   }
 
