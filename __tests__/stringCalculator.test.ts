@@ -36,4 +36,12 @@ describe('String Calculator - add()', () => {
   it('supports custom delimiter of any length', () => {
     expect(add('//[***]\n1***2***3')).toBe(6);
   });
+
+  it('supports multiple delimiters', () => {
+    expect(add('//[*][%]\n1*2%3')).toBe(6);
+  });
+
+  it('supports multiple delimiters with length > 1', () => {
+    expect(add('//[***][%%]\n1***2%%3')).toBe(6);
+  });
 });
