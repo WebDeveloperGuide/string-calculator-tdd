@@ -20,4 +20,8 @@ describe('String Calculator - add()', () => {
   it('supports new lines between numbers', () => {
     expect(add('1\n2,3')).toBe(6);
   });
+
+  it('supports custom delimiter using header syntax', () => {
+    expect(add('//;\n1;2')).toBe(3);
+  });
 });
