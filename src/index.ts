@@ -1,0 +1,1 @@
+export const initializeCalculator = (): void => {};
