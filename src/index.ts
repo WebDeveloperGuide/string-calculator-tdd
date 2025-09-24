@@ -1,1 +1,2 @@
-export const initializeCalculator = (): void => {};
+export { add } from './stringCalculator';
+export { default } from './stringCalculator';
