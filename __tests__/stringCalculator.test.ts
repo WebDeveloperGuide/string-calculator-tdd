@@ -12,4 +12,8 @@ describe('String Calculator - add()', () => {
   it('returns the sum for two comma-separated numbers', () => {
     expect(add('1,5')).toBe(6);
   });
+
+  it('returns the sum for any amount of comma-separated numbers', () => {
+    expect(add('1,2,3,4')).toBe(10);
+  });
 });

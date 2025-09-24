@@ -5,10 +5,9 @@ export function add(numbers: string): number {
 
   if (numbers.includes(',')) {
     const parts = numbers.split(',');
-    if (parts.length === 2) {
-      return parseInt(parts[0], 10) + parseInt(parts[1], 10);
-    }
+    return parts.reduce((sum, part) => sum + parseInt(part, 10), 0);
   }
+
   return parseInt(numbers, 10);
 }
 export default add;
