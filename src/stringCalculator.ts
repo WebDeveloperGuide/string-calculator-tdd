@@ -20,6 +20,6 @@ export function add(numbers: string): number {
   if (negatives.length > 0) {
     throw new Error(`negative numbers not allowed ${negatives.join(',')}`);
   }
-  return numbersList.reduce((sum, n) => sum + (Number.isNaN(n) ? 0 : n), 0);
+  return numbersList.filter((n) => !Number.isNaN(n) && n <= 1000).reduce((sum, n) => sum + n, 0);
 }
 export default add;
